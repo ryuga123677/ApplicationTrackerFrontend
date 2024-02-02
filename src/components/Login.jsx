@@ -3,7 +3,11 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { SpinnerDotted } from 'spinners-react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export const Login = () => {
+    const notify = (message) => toast(message);
     const navigate = useNavigate();
 
 
@@ -20,14 +24,15 @@ export const Login = () => {
             console.log(response.data.message);
             if(response.data.message==="logged in successfully")
             {localStorage.setItem('username',username);
+            notify(response.data.message);
               navigate('/');
             }
             else
-            {
-                navigate('/login');
+            {notify(response.data.message);
+                
             }
         } catch (err) {
-           
+            notify(err.message);
         }
     };
 
@@ -61,7 +66,7 @@ export const Login = () => {
 
 
             </div>
-
+            <ToastContainer />
 
         </>
     )

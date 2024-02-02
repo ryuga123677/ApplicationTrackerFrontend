@@ -3,7 +3,10 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { SpinnerDotted } from 'spinners-react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const EditApplication = () => {
+    const notify = (message) => toast(message);
     const {id}=useParams();
     const navigate = useNavigate();
 
@@ -28,13 +31,16 @@ export const EditApplication = () => {
             });
             console.log(response.data.message);
             if (response.data.message === "application updated successfully") {
-                navigate('/');
+                notify(response.data.message);
+                // navigate('/');
             }
             else {
-                navigate('/applicationedit');
+                // navigate('/applicationedit');
+                notify(response.data.message);
             }
         } catch (err) {
 
+            notify(err.message);
         }
     };
 
@@ -83,6 +89,7 @@ export const EditApplication = () => {
 
 
             </div>
+            <ToastContainer />
 
 
         </>

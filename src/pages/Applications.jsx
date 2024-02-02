@@ -42,8 +42,8 @@ export const Applications = () => {
                             <div>
                                 <div className='flex '>
                                 <div className='flex text-red-500 text-4xl'>{item.title}</div>
-                                <button className='ml-[80%]' onClick={()=>navigate(`/applicationedit/${item._id}`)}>Edit</button>
-                                <button className='ml-[2%]'  onClick={()=>deleteitem(item._id)}>Delete</button>
+                                <button className='ml-[80%] text-blue-200' onClick={()=>navigate(`/applicationedit/${item._id}`)}>Edit</button>
+                                <button className='ml-[2%] text-red-200'  onClick={()=>deleteitem(item._id)}>Delete</button>
                                 </div>
                                
                            

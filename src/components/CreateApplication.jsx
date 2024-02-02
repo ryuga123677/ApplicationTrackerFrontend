@@ -3,7 +3,10 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { SpinnerDotted } from 'spinners-react';
 import { useNavigate } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export const CreateApplication = () => {
+    const notify = (message) => toast(message);
     const navigate = useNavigate();
 
 
@@ -13,6 +16,7 @@ export const CreateApplication = () => {
     const [amount, setAmount] = useState(0);
     const [description, setDescription] = useState('');
     const [skillsrequired, setSkillrequired] = useState('');
+    
     const handleSubmit = async () => {
         try {const username=localStorage.getItem('username','');
             const response = await axios.post('http://localhost:3000/api/createapplication', {
@@ -26,12 +30,17 @@ export const CreateApplication = () => {
             });
             console.log(response.data.message);
             if (response.data.message === "Application created successfully") {
-                navigate('/');
+                notify(response.data.message);
+                // navigate('/');
+                
             }
             else {
-                navigate('/createapplication');
+                notify(response.data.message);
+                // navigate('/createapplication');
+                
             }
         } catch (err) {
+            notify(err.message);
 
         }
     };
@@ -82,7 +91,7 @@ export const CreateApplication = () => {
 
             </div>
 
-
+            <ToastContainer />
         </>
     )
 }

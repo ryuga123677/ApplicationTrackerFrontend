@@ -40,12 +40,12 @@ export const Signup = () => {
         <>
             
 
-            <div className='flex justify-center items-center h-screen p-5 bg-gray-200 rounded-md shadow-md'>
+            <div className='flex justify-center items-center h-screen p-5 bg-gray-200 rounded-md shadow-md '>
 
                 
                     <div className='flex-column  justify-center items-center bg-gray-100 rounded-md shadow-md p-2'>
-            
-                    <div className='text-bold text-red-400 text-2xl'>Signup Here</div>
+        
+                    <div className='text-bold text-red-400 text-2xl '>Signup Here</div>
                         <div className='text-lg m-4'>
                             <label htmlFor="username"></label>
                             <input type="text" name="username" className='rounded-md' placeholder="Name" value={username} onChange={(e) => setUsername(e.target.value)} />
