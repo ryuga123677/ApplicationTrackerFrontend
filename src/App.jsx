@@ -7,6 +7,7 @@ import { Login } from './components/Login'
 import { CreateApplication } from './components/CreateApplication'
 import { Applications } from './pages/Applications'
 import { EditApplication } from './components/EditApplication'
+import { FullView } from './pages/FullView'
 function App() {
   
 
@@ -20,6 +21,7 @@ function App() {
    <Route path='createapplication' element={ <CreateApplication/>} />
    <Route path='applications' element={ <Applications/>} />
    <Route path='applicationedit/:id' element={ <EditApplication/>} />
+   <Route path='fullview/:user' element={ <FullView/>} />
    
    </Routes>
     

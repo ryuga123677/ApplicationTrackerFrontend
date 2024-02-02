@@ -35,35 +35,37 @@ export const Applications = () => {
     }, [])
     return (
         <>
-            <div>
-                {loading ? (<SpinnerCircularSplit />) : (
-                    items.map((item, index) => (
-                        <div key={index} className='flex-column m-10 bg-gray-100 rounded-md shadow-md p-10 gap-[10px]'>
-                            <div>
-                                <div className='flex '>
-                                <div className='flex text-red-500 text-4xl'>{item.title}</div>
-                                <button className='ml-[80%] text-blue-200' onClick={()=>navigate(`/applicationedit/${item._id}`)}>Edit</button>
-                                <button className='ml-[2%] text-red-200'  onClick={()=>deleteitem(item._id)}>Delete</button>
-                                </div>
-                               
-                           
-                            <div className='font-bold text-xl m-2'>{item.companyname}</div>
-                            <div className='flex gap-[10%] m-2'> <div>{item.location}</div>
-                                <div>{item.amount}</div>
-                                <div>{item.skillsrequired}</div>
-                            </div>
-                           
-                                <div>{item.description}</div>
-                               
-
-                            </div>
-
-
-
-                        </div>
-                    ))
-                )}
+            <div className='bg-blue-100 min-h-screen p-8'>
+      {loading ? (
+        <SpinnerCircularSplit />
+      ) : (
+        items.map((item, index) => (
+          <div key={index} className='flex-column bg-yellow-100 rounded-md shadow-md p-6 mb-4'>
+            <div className='flex justify-between items-center'>
+              <div className='flex text-red-500 text-4xl'>{item.title}</div>
+              <div className='flex'>
+                <button
+                  className='text-blue-500 ml-2'
+                  onClick={() => navigate(`/applicationedit/${item._id}`)}
+                >
+                  Edit
+                </button>
+                <button className='text-red-500 ml-2' onClick={() => deleteItem(item._id)}>
+                  Delete
+                </button>
+              </div>
             </div>
+            <div className='font-bold text-xl mt-2'>{item.companyname}</div>
+            <div className='flex gap-4 mt-2 text-xl'>
+              <div>Location - {item.location}</div>
+              <div>Stipend - {item.amount}</div>
+              <div>Skills Required - {item.skillsrequired}</div>
+            </div>
+            <div className='mt-2'>Description - {item.description}</div>
+          </div>
+        ))
+      )}
+    </div>
         </>
     )
 }
