@@ -48,8 +48,8 @@ export const MainPage = () => {
                                 navigate('/');
                             }}>Logout</button>
 
-                            <button className='bg-red-100 m-5 p-5 rounded-md' onClick={() => navigate('createapplication')}>Create Application</button>
-                            <button className='bg-red-100 m-5 p-5 rounded-md' onClick={() => navigate('applications')}>My Applications</button>
+                            <button className='bg-blue-100 m-5 p-5 rounded-md' onClick={() => navigate('createapplication')}>Create Application</button>
+                            <button className='bg-blue-100 m-5 p-5 rounded-md' onClick={() => navigate('applications')}>My Applications</button>
                         </div>
                     ) : (
                         <div><button className='bg-blue-100 m-5 p-5 rounded-md' onClick={() => navigate('signup')}>Signup</button>
@@ -65,7 +65,7 @@ export const MainPage = () => {
     items.map((item, index) => (
         
       <button key={index} onClick={() => navigate(`/fullview/${item._id}`)}>
-        <div className='flex-column m-10 bg-yellow-100 rounded-md shadow-md p-10 w-max'>
+        <div className='flex-column m-10 bg-yellow-100 rounded-md shadow-md p-10 w-[300px]'>
           <div className='flex text-red-500 text-4xl ml-14'>{item.title}</div>
           <div className='font-bold text-xl mr-7 mt-5 mb-5'>company-{item.companyname}</div>
           <div className='flex gap-[10%] ml-14 mt-1'>
