@@ -15,7 +15,7 @@ export const Signup = () => {
 
     const handleSubmit = async () => {
         try {
-            const response = await axios.post('http://localhost:3000/hkv/register',{
+            const response = await axios.post('https://application-backend-5vqe.onrender.com/hkv/register',{
                 username,
                 email,
                 password,

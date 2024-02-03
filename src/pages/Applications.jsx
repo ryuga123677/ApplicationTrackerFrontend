@@ -23,7 +23,7 @@ export const Applications = () => {
         }
     }
     const deleteitem = async (id) => {
-        const response = await axios.delete(`http://localhost:3000/api/applicationtobedeleted?id=${id}`);
+        const response = await axios.delete(`https://application-backend-5vqe.onrender.com/api/applicationtobedeleted?id=${id}`);
         if(response.data.message==="Application deleted successfully")
         {
             setItems(items.filter(user => user._id !==id));

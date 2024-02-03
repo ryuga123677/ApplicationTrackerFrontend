@@ -16,7 +16,7 @@ export const MainPage = () => {
     const getdetails = async () => {
 
         try {
-            const response = await axios.get('http://localhost:3000/api/applicationlists');
+            const response = await axios.get('https://application-backend-5vqe.onrender.com/api/applicationlists');
             setItems(response.data);
             console.log(response.data);
             setLoading(false);

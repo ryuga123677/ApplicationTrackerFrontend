@@ -12,7 +12,7 @@ export const FullView = () => {
     const [loading, setLoading] = useState(true);
     const getapplication = async () => {
         try {
-            const response = await axios.get(`http://localhost:3000/api/applicationfordisplay?search=${user}`);
+            const response = await axios.get(`https://application-backend-5vqe.onrender.com/api/applicationfordisplay?search=${user}`);
             setItems(response.data);
             setLoading(false);
 

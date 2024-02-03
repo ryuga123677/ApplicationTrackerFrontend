@@ -20,7 +20,7 @@ export const CreateApplication = () => {
     const [statu, setStatus] = useState('');
     const handleSubmit = async () => {
         try {const username=localStorage.getItem('username','');
-            const response = await axios.post('http://localhost:3000/api/createapplication', {
+            const response = await axios.post('https://application-backend-5vqe.onrender.com/api/createapplication', {
                 title,
                 location,
                 companyname,
