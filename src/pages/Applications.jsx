@@ -12,7 +12,7 @@ export const Applications = () => {
         try {
             const username = localStorage.getItem('username')||"";
             console.log(username);
-            const response = await axios.get(`http://localhost:3000/api/applications?search=${username}`);
+            const response = await axios.get(`https://application-backend-5vqe.onrender.com/api/applications?search=${username}`);
             setItems(response.data);
             console.log(response.data);
             setLoading(false);
