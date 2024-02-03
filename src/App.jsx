@@ -8,11 +8,13 @@ import { CreateApplication } from './components/CreateApplication'
 import { Applications } from './pages/Applications'
 import { EditApplication } from './components/EditApplication'
 import { FullView } from './pages/FullView'
+import { Navbar } from './components/Navbar'
 function App() {
   
 
   return (
     <>
+    <Navbar/>
     <Routes>
    
    <Route path='/' element={ <MainPage/>} />
