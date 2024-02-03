@@ -40,7 +40,7 @@ export const Signup = () => {
         <>
             
 
-            <div className='flex justify-center items-center h-screen p-5 bg-blue-50 rounded-md shadow-md '>
+            <div className='flex justify-center items-center h-screen p-5 bg-gray-100 rounded-md shadow-md '>
 
                 
                     <div className='flex-column  justify-center items-center bg-yellow-100 rounded-md shadow-md p-2'>

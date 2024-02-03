@@ -25,7 +25,7 @@ export const FullView = () => {
         getapplication();
     }, [])
     return (
-        <>  <div className="flex items-center justify-center h-screen bg-blue-50">
+        <>  <div className="flex items-center justify-center h-screen bg-gray-100">
         {loading ? (
           <SpinnerCircularSplit className="text-blue-500" />
         ) : (

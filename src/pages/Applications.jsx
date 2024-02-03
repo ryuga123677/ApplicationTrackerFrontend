@@ -35,14 +35,14 @@ export const Applications = () => {
     }, [])
     return (
         <>
-            <div className='bg-blue-50 min-h-screen p-8'>
+            <div className='bg-gray-100 min-h-screen p-8'>
       {loading ? (
         <SpinnerCircularSplit />
       ) : (
         items.map((item, index) => (
-          <div key={index} className='flex-column bg-yellow-100 rounded-md shadow-md p-6 mb-4'>
+          <div key={index} className='flex-column bg-white rounded-md shadow-md p-6 mb-4'>
             <div className='flex justify-between items-center'>
-              <div className='flex text-red-500 text-4xl'>{item.title}</div>
+              <div className='flex text-blue-400 text-4xl'>{item.title}</div>
               <div className='flex'>
                 <button
                   className='text-blue-500 ml-2'
