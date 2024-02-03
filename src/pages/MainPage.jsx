@@ -60,10 +60,10 @@ export const MainPage = () => {
 
 
                 </div>
-                <div>
+                <div className='flex-column'>
                     {loading ? (<SpinnerCircularSplit className='items-center justify-center align-center h-full' />) : (
                         items.map((item, index) => (
-                            <button onClick={()=>{navigate(`/fullview/${item._id}`)}}>
+                            <button onClick={()=>{navigate(`/fullview/${item._id}`)} } >
                             <div key={index} className='flex-column m-10 bg-yellow-100 rounded-md shadow-md p-10 gap-[10px] w-full'>
                                
                                     
