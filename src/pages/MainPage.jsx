@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import men from '../assets/men.png'
 
 export const MainPage = () => {
-    const notify = () => toast("Welcome");
+    
     const navigate = useNavigate();
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -33,8 +33,8 @@ export const MainPage = () => {
     }, [])
     return (
         <>
-            <div className=' flex w-full'>
-                <div className='w-[50%] h-[50%] m-10 rounded-md shadow-md bg-yellow-100 p-2 '>
+            <div className=' flex w-full bg-blue-50'>
+                <div className='w-[50%] h-[50%] m-10 rounded-md shadow-md bg-red-100 p-2 '>
                     <div className='flex'>
                         <div className='rounded-full bg-red-200 w-[9rem] h-[7rem] m-10'>
 
@@ -61,28 +61,24 @@ export const MainPage = () => {
 
                 </div>
                 <div className='flex-column'>
-                    {loading ? (<SpinnerCircularSplit className='items-center justify-center align-center h-full' />) : (
-                        items.map((item, index) => (
-                            <button onClick={()=>{navigate(`/fullview/${item._id}`)} } >
-                            <div key={index} className='flex-column m-10 bg-yellow-100 rounded-md shadow-md p-10 gap-[10px] w-full'>
-                               
-                                    
-                                <div className='flex text-red-500 text-4xl ml-14'>{item.title}</div>
-                                <div className='font-bold text-xl mr-7 mt-5 mb-5'>company-{item.companyname}</div>
-                                <div className='flex gap-[10%] ml-14 mt-1'> 
-                                <div>{item.location}</div>
-                                    <div>{item.amount}</div>
-
-                                </div>
-
-                                
-
-
-                            </div>
-                            </button>
-                        ))
-                    )}
-                </div>
+  {loading ? (
+    <SpinnerCircularSplit className='items-center justify-center align-center h-full' />
+  ) : (
+    items.map((item, index) => (
+        
+      <button key={index} onClick={() => navigate(`/fullview/${item._id}`)}>
+        <div className='flex-column m-10 bg-yellow-100 rounded-md shadow-md p-10 w-max'>
+          <div className='flex text-red-500 text-4xl ml-14'>{item.title}</div>
+          <div className='font-bold text-xl mr-7 mt-5 mb-5'>company-{item.companyname}</div>
+          <div className='flex gap-[10%] ml-14 mt-1'>
+            <div>{item.location}</div>
+            <div>{item.amount}</div>
+          </div>
+        </div>
+      </button>
+    ))
+  )}
+</div>
             </div>
         
         </>
