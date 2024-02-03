@@ -40,10 +40,10 @@ export const Login = () => {
         <>
             
 
-            <div className='flex justify-center items-center h-screen p-5 bg-gray-100 rounded-md shadow-md'>
+            <div className='flex justify-center items-center h-screen p-5 bg-red-50 rounded-md shadow-md'>
 
                 
-                    <div className='flex-column  justify-center items-center bg-yellow-100 rounded-md shadow-md p-2'>
+                    <div className='flex-column  justify-center items-center bg-red-100 rounded-md shadow-md p-2'>
             
                     <div className='text-bold text-red-400 text-2xl'>Login Here</div>
                         <div className='text-lg m-4'>

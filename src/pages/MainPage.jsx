@@ -3,6 +3,10 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { SpinnerCircularSplit } from "spinners-react";
 import { useNavigate } from "react-router-dom";
+import { IoLocationOutline } from "react-icons/io5";
+import { MdAttachMoney } from "react-icons/md";
+import { FaRegBuilding } from "react-icons/fa";
+
 
 import men from "../assets/men.png";
 
@@ -29,8 +33,8 @@ export const MainPage = () => {
   }, []);
   return (
     <>
-      <div className=" flex w-full bg-gray-100">
-        <div className="w-[50%] h-[50%] m-10 rounded-md shadow-md bg-blue-50 p-2 ">
+      <div className=" flex w-full bg-red-50">
+        <div className="w-[50%] h-[50%] m-10 rounded-md shadow-lg bg-red-100 p-2 ">
           <div className="flex">
             <div className="rounded-full w-[9rem] h-[7rem] m-10">
               <img src={men} alt="" className="h-full w-full rounded-full" />
@@ -93,7 +97,7 @@ export const MainPage = () => {
                 key={index}
                 onClick={() => navigate(`/fullview/${item._id}`)}
               >
-                <div className="flex-column m-1 rounded-md shadow-md p-10 w-[800px] bg-white">
+                <div className="flex-column m-2 rounded-md shadow-md p-10 w-[600px] bg-pink-50">
                   
                     
                     <div className="flex text-blue-400 text-4xl ml-14">
@@ -103,11 +107,11 @@ export const MainPage = () => {
                   
 
                   <div className="flex gap-[10%] ml-14 mt-5">
-                  <div className=" text-xl text-red-400 ">
-                     {item.companyname}
+                  <div className=" text-xl text-red-400 flex">
+                     <FaRegBuilding className="mt-1 mr-1"/>{item.companyname}
                     </div>
-                    <div>Location: {item.location}</div>
-                    <div>Stipend: {item.amount}</div>
+                    <div className="flex gap-2"><IoLocationOutline className="mt-1"/>  <div> {item.location}</div></div>
+                    <div className="flex gap-2"><MdAttachMoney className="mt-1"/> <div>{item.amount}</div></div>
                   </div>
                 </div>
               </button>

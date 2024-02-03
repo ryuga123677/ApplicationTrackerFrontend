@@ -5,6 +5,10 @@ import { SpinnerDotted } from 'spinners-react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { IoLocationOutline } from "react-icons/io5";
+import { MdAttachMoney } from "react-icons/md";
+import { FaRegBuilding } from "react-icons/fa";
+import { BsCalendarDate } from "react-icons/bs";
 export const EditApplication = () => {
     const notify = (message) => toast(message);
     const {id}=useParams();
@@ -52,10 +56,10 @@ export const EditApplication = () => {
         <>
 
 
-            <div className='flex justify-center items-center h-screen p-5 bg-gray-100 rounded-md shadow-md'>
+            <div className='flex justify-center items-center h-screen p-5 bg-red-50 rounded-md shadow-md'>
 
 
-                <div className='flex-column  justify-center items-center bg-yellow-100 rounded-md shadow-md p-2 w-[50%]'>
+                <div className='flex-column  justify-center items-center bg-red-100 rounded-md shadow-md p-2 w-[50%]'>
 
                     <div className='text-bold text-red-400 text-2xl'>Edit Application Below</div>
                     <div className='text-lg m-4'>

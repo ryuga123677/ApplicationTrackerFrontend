@@ -3,6 +3,11 @@ import axios from 'axios';
 import { SpinnerCircularSplit } from 'spinners-react';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { IoLocationOutline } from "react-icons/io5";
+import { MdAttachMoney } from "react-icons/md";
+import { FaRegBuilding } from "react-icons/fa";
+import { FaRegEdit } from "react-icons/fa";
+import { MdDeleteForever } from "react-icons/md";
 export const Applications = () => {
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -35,12 +40,12 @@ export const Applications = () => {
     }, [])
     return (
         <>
-            <div className='bg-gray-100 min-h-screen p-8'>
+            <div className='bg-red-50 h-screen p-8 justify-center items-center '>
       {loading ? (
         <SpinnerCircularSplit />
       ) : (
         items.map((item, index) => (
-          <div key={index} className='flex-column bg-white rounded-md shadow-md p-6 mb-4'>
+          <div key={index} className='flex-column bg-red-100 rounded-md shadow-md p-6 mb-4 ml-[25%] w-[600px]'>
             <div className='flex justify-between items-center'>
               <div className='flex text-blue-400 text-4xl'>{item.title}</div>
               <div className='flex'>
@@ -48,18 +53,18 @@ export const Applications = () => {
                   className='text-blue-500 ml-2'
                   onClick={() => navigate(`/applicationedit/${item._id}`)}
                 >
-                  Edit
+                  <FaRegEdit/>
                 </button>
-                <button className='text-red-500 ml-2' onClick={() => deleteItem(item._id)}>
-                  Delete
+                <button className='text-red-500 ml-2' onClick={() => deleteitem(item._id)}>
+                  <MdDeleteForever className='h-[20px] w-[20px]'/>
                 </button>
               </div>
             </div>
-            <div className='font-bold text-xl mt-2'>{item.companyname}</div>
+            <div className='font-bold text-xl mt-2 flex'><FaRegBuilding className='mr-1 mt-1'/>{item.companyname}</div>
             <div className='flex gap-4 mt-2 text-xl'>
-              <div>Location - {item.location}</div>
-              <div>Stipend - {item.amount}</div>
-              <div>Skills Required - {item.skillsrequired}</div>
+              <div className='flex'><IoLocationOutline className='mr-1 mt-1'/> : {item.location}</div>
+              <div className='flex'><MdAttachMoney className='mr-1 mt-1'/> {item.amount}</div>
+              <div>Skills : {item.skillsrequired}</div>
             </div>
             <div className='mt-2'>Description - {item.description}</div>
           </div>
