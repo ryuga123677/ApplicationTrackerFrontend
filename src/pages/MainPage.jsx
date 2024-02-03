@@ -33,7 +33,7 @@ export const MainPage = () => {
     }, [])
     return (
         <>
-            <div className=' flex w-full min-h-screen bg-blue-100'>
+            <div className=' flex w-full min-h-screen bg-blue-50'>
                 <div className='w-[50%] h-[50%] m-10 rounded-md shadow-md bg-yellow-100 p-2 '>
                     <div className='flex'>
                         <div className='rounded-full bg-red-200 w-[9rem] h-[7rem] m-10'>
