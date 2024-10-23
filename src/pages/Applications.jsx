@@ -17,7 +17,7 @@ export const Applications = () => {
         try {
             const username = localStorage.getItem('username')||"";
             console.log(username);
-            const response = await axios.get(`https://application-backend-5vqe.onrender.com/api/applications?search=${username}`);
+            const response = await axios.get(`http://localhost:3000//api/applications?search=${username}`);
             setItems(response.data);
             console.log(response.data);
             setLoading(false);
@@ -28,7 +28,7 @@ export const Applications = () => {
         }
     }
     const deleteitem = async (id) => {
-        const response = await axios.delete(`https://application-backend-5vqe.onrender.com/api/applicationtobedeleted?id=${id}`);
+        const response = await axios.delete(`http://localhost:3000//api/applicationtobedeleted?id=${id}`);
         if(response.data.message==="Application deleted successfully")
         {
             setItems(items.filter(user => user._id !==id));

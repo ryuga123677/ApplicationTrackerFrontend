@@ -17,10 +17,13 @@ export const CreateApplication = () => {
     const [description, setDescription] = useState('');
     const [skillsrequired, setSkillrequired] = useState('');
     const [duration, setDuration] = useState('');
-    const [statu, setStatus] = useState('');
+    const [status, setStatus] = useState('');
+    const [email, setEmail] = useState(localStorage.getItem('email') || '');
+
     const handleSubmit = async () => {
         try {const username=localStorage.getItem('username','');
-            const response = await axios.post('https://application-backend-5vqe.onrender.com/api/createapplication', {
+            const response = await axios.post('http://localhost:3000/api/createapplication', {
+                email,
                 title,
                 location,
                 companyname,
@@ -28,8 +31,8 @@ export const CreateApplication = () => {
                 description,
                 skillsrequired,
                 duration,
-                statu,
-                username
+                status,
+            
             });
             console.log(response.data.message);
             if (response.data.message === "Application created successfully") {
@@ -52,57 +55,116 @@ export const CreateApplication = () => {
         <>
 
 
-            <div className='flex justify-center items-center h-screen p-5 bg-gray-100 rounded-md shadow-md'>
+<div className="flex justify-center items-center h-screen p-5 rounded-md shadow-lg">
+        <div className="flex-column  justify-center items-center bg-[#F1F1F1] rounded-md shadow-md p-2 w-[60%]">
+          <div className="text-bold text-[#21209C] w-full m-2 text-2xl">
+           Fill Details
+          </div>
+          <div className="text-sm m-4">
+            <label htmlFor="title"></label>
+            <input
+              type="text"
+              name="title"
+              className="rounded-md w-[40rem] placeholder:text-sm p-2"
+              placeholder="Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            />
+          </div>
+          <div className="text-sm m-4">
+            <label htmlFor="Address"></label>
+            <input
+              type="text"
+              name="location"
+              className="rounded-md w-[40rem] placeholder:text-sm p-2"
+              placeholder="Address"
+              value={location}
+              onChange={(e) => setLocation(e.target.value)}
+            />
+          </div>
+          
+        
+          <div className="text-sm m-4">
+            <label htmlFor="Cgpa"> </label>
+            <input
+              type="number"
+              name="cgpa"
+              className="rounded-md w-[40rem] placeholder:text-sm p-2"
+              placeholder="Amount"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+            />
+          </div>
+      
+          <div className="text-sm m-4">
+            <label htmlFor="description"></label>
+            <input
+              type="text"
+              name="description"
+              className="rounded-md w-[40rem] placeholder:text-sm p-2"
+              placeholder="Company"
+              value={companyname}
+              onChange={(e) => setCompany(e.target.value)}
+            />
+          </div>
 
+          <div className="text-sm m-4">
+            <label htmlFor="Skills"> </label>
+            <input
+              type="text"
+              name="Skills"
+              className="rounded-md w-[40rem] placeholder:text-sm p-2"
+              placeholder="Skills"
+              value={skillsrequired}
+              onChange={(e) => setSkillrequired(e.target.value)}
+            />
+          </div>
+          <div className="text-sm m-4">
+            <label htmlFor="duration"> </label>
+            <input
+              type="text"
+              name="duration"
+              className="rounded-md w-[40rem] placeholder:text-sm p-2"
+              placeholder="Duration"
+              value={duration}
+              onChange={(e) => setDuration(e.target.value)}
+            />
+          </div>
+          <div className="text-sm m-4">
+            <label htmlFor="statu"></label>
+            <input
+              type="text"
+              name="statu"
+              className="rounded-md w-[40rem] placeholder:text-sm p-2"
+              placeholder="status"
+              value={status}
+              onChange={(e) => setStatus(e.target.value)}
+            />
+          </div>
+          <div className="text-sm m-4">
+            <label htmlFor="status"> </label>
+            <textarea
+            rows={3}
+              name="description"
+              className="rounded-md w-[40rem] placeholder:text-sm p-2"
+              placeholder="Description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          
+   
+<div className="flex justify-center"><button
+            className="bg-[#FDB827] w-[15%] mt-2 text-[#23120B] rounded-md p-1 shadow-lg"
+            onClick={() => handleSubmit()}
+          >
+            Submit
+          </button></div>
+          
+        </div>
+      </div>
 
-                <div className='flex-column  justify-center items-center bg-red-100 rounded-md shadow-md p-2 w-[50%]'>
-
-                    <div className='text-bold text-red-400 text-2xl'>Create Application Below</div>
-                    <div className='text-lg m-4'>
-                        <label htmlFor="title"></label>
-                        <input type="text" name="title" className='rounded-md w-[40rem]' placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} />
-                    </div>
-                    <div className='text-lg m-4'>
-                        <label htmlFor="location"></label>
-                        <input type="text" name="location" className='rounded-md w-[40rem]' placeholder="Location" value={location} onChange={(e) => setLocation(e.target.value)} />
-                    </div>
-                    <div className='text-lg m-4'>
-                        <label htmlFor="amount"></label>
-                        <input type="number" name="amount" className='rounded-md w-[40rem]' placeholder="Amount" value={amount} onChange={(e) => setAmount(e.target.value)} />
-                    </div>
-                    <div className='text-lg m-4'>
-                        <label htmlFor="description"></label>
-                        <input type="text" name="description" className='rounded-md h-[5rem] w-[40rem]' placeholder="Description" value={description} onChange={(e) => setDescription(e.target.value)} />
-                    </div>
-                    <div className='text-lg m-4'>
-                        <label htmlFor="Company"> </label>
-                        <input type="text" name="Company" className='rounded-md w-[40rem]' placeholder="Company" value={companyname} onChange={(e) => setCompany(e.target.value)} />
-                    </div>
-                    <div className='text-lg m-4'>
-                        <label htmlFor="Skills"> </label>
-                        <input type="text" name="Skills" className='rounded-md w-[40rem]' placeholder="Skills" value={skillsrequired} onChange={(e) => setSkillrequired(e.target.value)} />
-                    </div>
-                    <div className='text-lg m-4'>
-                        <label htmlFor="duration"> </label>
-                        <input type="text" name="duration" className='rounded-md w-[40rem]' placeholder="Duration" value={duration} onChange={(e) => setDuration(e.target.value)} />
-                    </div>
-                    <div className='text-lg m-4'>
-                        <label htmlFor="status"> </label>
-                        <input type="text" name="status" className='rounded-md w-[40rem]' placeholder="Status" value={statu} onChange={(e) => setStatus(e.target.value)} />
-                    </div>
-
-
-                    <button className='bg-red-300 rounded-md p-2 ml-[18rem] w-[10rem]' onClick={handleSubmit}>Submit</button>
-
-                </div>
-
-
-
-
-
-            </div>
-
-            <ToastContainer />
+      <ToastContainer />
         </>
     )
 }
