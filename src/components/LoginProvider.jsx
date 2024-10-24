@@ -23,7 +23,7 @@ export const LoginProvider = () => {
             });
             console.log(response.data.message);
             if(response.data.message==="logged in successfully")
-            {localStorage.setItem('email',email);
+            {localStorage.setItem('provideremail',email);
             notify(response.data.message);
               navigate('/providermainpage');
             }

@@ -18,7 +18,7 @@ export const JobsPosted = () => {
     try {
       const response = await axios.get(
         `http://localhost:3000/provider/jobsposted?search=${localStorage.getItem(
-          "email"
+          "provideremail"
         )}`
       );
       setItems(response.data);

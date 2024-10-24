@@ -23,7 +23,7 @@ export const LoginSeeker = () => {
             });
             console.log(response.data.message);
             if(response.data.message==="logged in successfully")
-            {localStorage.setItem('email',email);
+            {localStorage.setItem('seekeremail',email);
             notify(response.data.message);
               navigate('/seekermainpage');
             }

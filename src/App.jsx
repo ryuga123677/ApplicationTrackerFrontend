@@ -15,6 +15,7 @@ import { OptionPage } from './pages/OptionPage'
 import { LoginProvider } from './components/LoginProvider'
 import { ProviderMainPage } from './pages/ProviderMainpage'
 import { Applicantslist } from './pages/Applicantslist'
+import ChatPage from './pages/ChatPage'
 function App() {
   
 
@@ -35,7 +36,8 @@ function App() {
    <Route path='applications' element={ <Applications/>} />
    <Route path='applicationedit/:id' element={ <EditApplication/>} />
    <Route path='fullview/:user' element={ <FullView/>} />
-   <Route path='fullview/:user/applyjob' element={ <ApplyJob/>} />
+   <Route path='fullview/:jobid/applyjob' element={ <ApplyJob/>} />
+   <Route path='chat/:email' element={ <ChatPage/>} />
    </Routes>
     
     </>

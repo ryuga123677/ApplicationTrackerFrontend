@@ -1,90 +1,113 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { SpinnerCircularSplit } from "spinners-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdAttachMoney } from "react-icons/md";
 import { FaRegBuilding } from "react-icons/fa";
-import { TfiTimer } from "react-icons/tfi";
-import { useParams } from "react-router-dom";
+
 export const Applicantslist = () => {
   const navigate = useNavigate();
-  const {id}=useParams();
+  const { id } = useParams();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const getdetails = async () => {
-    try { 
+    try {
       const response = await axios.get(
         `http://localhost:3000/api/applicantlists?search=${id}`
       );
       setItems(response.data);
-      console.log(response.data);
       setLoading(false);
     } catch (error) {
       setLoading(false);
       console.log(error);
     }
   };
+  const sendemail = async (seekeremail) => {
+    const provideremail=localStorage.getItem('provideremail');
+    try {
+      const response = await axios.post(
+        'http://localhost:3000/provider/enablechat',
+        {provideremail,
+          seekeremail
+        }
+      );
+      console.log(response.data);
+     
+    } catch (error) {
+    
+      console.log(error);
+    }
+  };
   useEffect(() => {
     getdetails();
   }, []);
-  return (
-    <>
-      <div className="flex justify-center h-[100vh] ">
-        <div className="flex-column justify-center w-[100%] m-5 bg-[#F1F1F1] overflow-y-auto">
-          {loading ? (
-            <SpinnerCircularSplit className="items-center justify-center align-center h-full" />
-          ) : (
-            items.map((item, index) => (
-              <button
-                key={index}
-                onClick={() => navigate(`/fullview/${item._id}`)}
-                className="flex flex-wrap m-2 rounded-md shadow-md p-10 mr-10 w-[90%] bg-white align-center"
-              >
-                <div className=" w-[100%]">
-                  <div className="flex text-[#21209C] text-2xl ml-14">
-                    {item.name}
-                  </div>
 
-                  <div className="flex gap-[10%] ml-14 mt-5 ">
-                    <div className=" text-lg text-[#FDB827] flex">
-                      <FaRegBuilding className="mt-1 mr-1" />
-                      {item.email}
-                    </div>
-                    <div className="flex gap-2">
-                      <IoLocationOutline className="mt-1" />{" "}
-                      <div> {item.address}</div>
-                    </div>
-                    <div className="flex gap-2">
-                      <MdAttachMoney className="mt-1" />{" "}
-                      <div>{item.college}</div>
-                    </div>
-                    <div className="flex gap-2">
-                      <IoLocationOutline className="mt-1" />{" "}
-                      <div> {item.cgpa}</div>
-                    </div>
-                    <div className="flex gap-2">
-                      <IoLocationOutline className="mt-1" />{" "}
-                      <div> {item.skills}</div>
-                    </div>
-                    <div className="flex gap-2">
-                      <IoLocationOutline className="mt-1" />{" "}
-                      <div> {item.hirereason}</div>
-                    </div>
-                    <div className="flex gap-2">
-                      <IoLocationOutline className="mt-1" />{" "}
-                      <div> {item.coverletter}</div>
-                    </div>
-                   
-                  </div>
-                </div>
-              </button>
-            ))
-          )}
+  return (
+    <div className="flex flex-wrap gap-4 p-5 ">
+      {loading ? (
+        <div className="flex justify-center items-center h-screen w-full">
+          <SpinnerCircularSplit />
         </div>
-      </div>
-    </>
+      ) : items.length === 0 ? (
+        <div className="text-center text-xl text-gray-500 mt-10 w-full">
+          No data available
+        </div>
+      ) : (
+        items.map((item, index) => (
+          <button
+            key={index}
+            
+            className="flex flex-col bg-[#F1F1F1] rounded-lg shadow-xl p-5 w-1/3 hover:shadow-lg transition duration-200 ease-in-out"
+          >
+            <div className="text-[#21209C] font-semibold mb-2">
+              Name- {item.name}
+            </div>
+            <div className="flex flex-col gap-2">
+              <div className=" flex items-center">
+               
+                Email-{item.email}
+              </div>
+              <div className="flex items-center">
+               
+                Address- <div>{item.address}</div>
+              </div>
+              <div className="flex items-center">
+                
+                College-<div>{item.college}</div>
+              </div>
+              <div className="flex items-center">
+              
+                CGPA-<div>{item.cgpa}</div>
+              </div>
+              <div className="flex items-center">
+                
+                Skills-<div>{item.skills}</div>
+              </div>
+              <div className="flex items-center">
+               
+                Hire reason-<div>{item.hirereason}</div>
+              </div>
+              <div className="flex flex-col items-center">
+               <div className="text-[#FDB827]">Cover Letter</div>
+                <div>{item.coverletter}</div>
+              </div>
+              <div className="flex gap-3"> <button
+              className="bg-[#FDB827] w-[100px] text-[#23120B] rounded-md p-1 shadow-lg "
+      
+            >
+              Resume
+            </button>  <button
+              className="bg-[#FDB827] w-[100px] text-[#23120B] rounded-md p-1 shadow-lg "
+         onClick={()=>{navigate(`/chat/${item.email}`);sendemail(item.email)}}
+            >
+              Chat
+            </button></div>
+            </div>
+          </button>
+        ))
+      )}
+    </div>
   );
 };

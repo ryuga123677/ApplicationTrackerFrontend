@@ -11,6 +11,7 @@ import men from "../assets/men.png";
 import { Jobs } from "./Jobs";
 import { Profile } from "../components/Profile";
 import { JobsApplied } from "./JobsApplied";
+import { Providerlist } from "./Providerlist";
 
 export const SeekerMainPage = () => {
   const navigate = useNavigate();
@@ -35,6 +36,7 @@ export const SeekerMainPage = () => {
           {check=="Jobs" && <Jobs/>}
           {check=="Profile" && <Profile/>}
           {check=="Applications" && <JobsApplied/>}
+          {check=="Chat" && <Providerlist/>}
         </div>
       </div>
     </>
