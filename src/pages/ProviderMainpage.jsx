@@ -11,13 +11,30 @@ import men from "../assets/men.png";
 import {  JobsPosted } from "./MyJobs";
 import { Profile } from "../components/Profile";
 import { CreateApplication } from "../components/CreateApplication";
+import { ProviderProfile } from "../components/ProviderProfile";
+import { Applicantchatlist } from "./Applicantchatlist";
 
 export const ProviderMainPage = () => {
   const navigate = useNavigate();
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [check,Setcheck]=useState("Jobs");
-  const username = localStorage.getItem("username", "");
+  const [check,Setcheck]=useState("Applications");
+  const islogin = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/provider/isproviderlogin");
+      console.log(response.data);
+      if (response.data === "no refreshtoken") {
+        
+        navigate('/');
+      }
+    } catch (error) {
+      console.error('Error fetching login status:', error);
+      
+    }
+  }
+  
+  useEffect(() => {
+    islogin();
+  }, []);
+ 
  
   return (
     <>
@@ -28,13 +45,14 @@ export const ProviderMainPage = () => {
           <button className="hover:bg-[#FDB827] rounded-md p-3" onClick={()=>Setcheck("Profile")}>Profile</button>
      
           <button className="hover:bg-[#FDB827] rounded-md p-3" onClick={()=>Setcheck("Applications")}>My Jobs</button>
-          <button className="hover:bg-[#FDB827] rounded-md p-3" onClick={()=>Setcheck("Inbox")}>Inbox</button>
+
           <button className="hover:bg-[#FDB827] rounded-md p-3" onClick={()=>Setcheck("Chat")}>Chat</button>
         </div>
         <div className="w-[80%]">
         {check=="Jobs" && <CreateApplication/>}
-          {check=="Profile" && <Profile/>}
+          {check=="Profile" && <ProviderProfile/>}
           {check=="Applications" && <JobsPosted/>}
+          {check=="Chat" && <Applicantchatlist/>}
 
         </div>
       </div>

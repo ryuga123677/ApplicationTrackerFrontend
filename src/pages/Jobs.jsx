@@ -26,8 +26,22 @@ export const Jobs = () => {
       setLoading(false);
       console.log(error);
     }
-  };
+  }; const islogin = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/user/isseekerlogin");
+      console.log(response.data);
+      if (response.data === "no refreshtoken") {
+        
+        navigate('/');
+      }
+    } catch (error) {
+      console.error('Error fetching login status:', error);
+      
+    }
+  }
+
   useEffect(() => {
+    islogin();
     getdetails();
   }, []);
   return (

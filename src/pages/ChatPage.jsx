@@ -12,7 +12,7 @@ const ChatPage = () => {
   const provideremail = localStorage.getItem("provideremail", "****");
   const seekeremail = localStorage.getItem("seekeremail", "****");
   var tempemail = provideremail || seekeremail;
-  console.log(tempemail);
+
   const [messages, setMessages] = useState([]);
   const [newmessage, setnewMessage] = useState("");
   socket.on("connect", () => {});

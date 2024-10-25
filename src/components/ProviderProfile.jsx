@@ -2,14 +2,14 @@ import React from 'react'
 import { useState,useEffect } from 'react';
 import axios from 'axios';
 
-export const Profile = () => {
+export const ProviderProfile = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
-  const email = localStorage.getItem("seekeremail", "");
+  const email = localStorage.getItem("provideremail", "");
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/user/getprofile?search=${email}`
+        `http://localhost:3000/provider/getprofile?search=${email}`
       );
       setItems(response.data);
       console.log(response.data);
@@ -19,22 +19,7 @@ export const Profile = () => {
       console.log(error);
     }
   };
-  const islogin = async () => {
-    try {
-      const response = await axios.get("http://localhost:3000/user/isseekerlogin");
-      console.log(response.data);
-      if (response.data === "no refreshtoken") {
-        
-        navigate('/');
-      }
-    } catch (error) {
-      console.error('Error fetching login status:', error);
-      
-    }
-  }
-  
   useEffect(() => {
-    islogin();
     getdetails();
   }, []);
   return (
