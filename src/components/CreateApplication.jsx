@@ -21,7 +21,7 @@ export const CreateApplication = () => {
     const [email, setEmail] = useState(localStorage.getItem('provideremail') || '');
     const islogin = async () => {
       try {
-        const response = await axios.get("https://application-backend-5vqe.onrender.com/provider/isproviderlogin");
+        const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/provider/isproviderlogin`);
         console.log(response.data);
         if (response.data === "no refreshtoken") {
           
@@ -38,7 +38,7 @@ export const CreateApplication = () => {
     }, []);
     const handleSubmit = async () => {
         try {
-            const response = await axios.post('https://application-backend-5vqe.onrender.com/api/createapplication', {
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/createapplication`, {
                 email,
                 title,
                 location,

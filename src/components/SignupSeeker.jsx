@@ -28,7 +28,7 @@ export const SignupSeeker = () => {
     }
 
     try { setLoading(true)
-      const response = await axios.post("https://application-backend-5vqe.onrender.com/user/registerseeker", formData);
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/registerseeker`, formData);
 
       console.log(response.data.message);
       if (response.data.message === "user created successfully") {

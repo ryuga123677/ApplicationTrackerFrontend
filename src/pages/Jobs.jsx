@@ -17,7 +17,7 @@ export const Jobs = () => {
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        "https://application-backend-5vqe.onrender.com/api/applicationlists"
+        `${process.env.REACT_APP_BACKEND_URL}/api/applicationlists`
       );
       setItems(response.data);
       setLoading(false);
@@ -30,7 +30,7 @@ export const Jobs = () => {
   const islogin = async () => {
     try {
       const response = await axios.get(
-        "https://application-backend-5vqe.onrender.com/user/isseekerlogin"
+        `${process.env.REACT_APP_BACKEND_URL}/user/isseekerlogin`
       );
       if (response.data === "no refreshtoken") {
         navigate("/");

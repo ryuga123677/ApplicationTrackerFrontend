@@ -21,7 +21,7 @@ export const SeekerMainPage = () => {
  
   const islogin = async () => {
     try {
-      const response = await axios.get("https://application-backend-5vqe.onrender.com/user/isseekerlogin");
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/isseekerlogin`);
       console.log(response.data);
       if (response.data === "no refreshtoken") {
         

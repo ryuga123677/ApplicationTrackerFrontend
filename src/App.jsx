@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import './App.css'
 import { SeekerMainPage } from './pages/SeekerMainpage'
 import {Routes,Route} from 'react-router-dom'

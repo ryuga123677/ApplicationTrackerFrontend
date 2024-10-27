@@ -18,7 +18,7 @@ export const JobsPosted = () => {
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        `https://application-backend-5vqe.onrender.com/provider/jobsposted?search=${localStorage.getItem(
+        `${process.env.REACT_APP_BACKEND_URL}/provider/jobsposted?search=${localStorage.getItem(
           "provideremail"
         )}`
       );
@@ -33,7 +33,7 @@ export const JobsPosted = () => {
   const islogin = async () => {
     try {
       const response = await axios.get(
-        "https://application-backend-5vqe.onrender.com/provider/isproviderlogin"
+        `${process.env.REACT_APP_BACKEND_URL}/provider/isproviderlogin`
       );
       if (response.data === "no refreshtoken") {
         navigate("/");

@@ -32,7 +32,7 @@ export const SignupProvider = () => {
     }
 
     try { setLoading(true)
-      const response = await axios.post("https://application-backend-5vqe.onrender.com/provider/registerprovider", formData, {
+      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/provider/registerprovider`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

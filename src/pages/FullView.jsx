@@ -19,7 +19,7 @@ export const FullView = () => {
 
     try {
       const response = await axios.get(
-        `https://application-backend-5vqe.onrender.com/api/applicationfordisplay?search=${user}`
+        `${process.env.REACT_APP_BACKEND_URL}/api/applicationfordisplay?search=${user}`
       );
       setItems(response.data);
       setLoading(false);
@@ -30,7 +30,7 @@ export const FullView = () => {
   };
   const islogin = async () => {
     try {
-      const response = await axios.get("https://application-backend-5vqe.onrender.com/user/isseekerlogin");
+      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/isseekerlogin`);
       console.log(response.data);
       if (response.data === "no refreshtoken") {
         

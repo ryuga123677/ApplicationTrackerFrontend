@@ -17,7 +17,7 @@ export const LoginSeeker = () => {
     const handleSubmit = async () => {
       setLoading(true);
         try {
-            const response = await axios.post('https://application-backend-5vqe.onrender.com/user/loginseeker',{
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/loginseeker`,{
                 email,
                 password,
               
