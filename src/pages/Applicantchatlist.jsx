@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { SpinnerCircularSplit } from "spinners-react";
+import { SpinnerDotted } from "spinners-react";
 import { useNavigate } from "react-router-dom";
 export const Applicantchatlist = () => {
   const navigate = useNavigate();
@@ -11,7 +11,7 @@ export const Applicantchatlist = () => {
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/provider/getapplieremail?search=${localStorage.getItem("provideremail")}`
+        `https://application-backend-5vqe.onrender.com/provider/getapplieremail?search=${localStorage.getItem("provideremail")}`
       );
       setItems(response.data);
       console.log(response.data);
@@ -23,7 +23,7 @@ export const Applicantchatlist = () => {
   };
   const islogin = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/provider/isproviderlogin");
+      const response = await axios.get("https://application-backend-5vqe.onrender.com/provider/isproviderlogin");
       console.log(response.data);
       if (response.data === "no refreshtoken") {
         
@@ -45,7 +45,7 @@ export const Applicantchatlist = () => {
       <div className="flex justify-center h-[100vh]">
   <div className="flex-column justify-center w-[100%] m-5 bg-[#F1F1F1] overflow-y-auto">
     {loading ? (
-      <SpinnerCircularSplit className="items-center justify-center align-center h-full" />
+      <div className="flex justify-center h-full">   <div className="flex flex-col justify-center"><SpinnerDotted size={50} thickness={100} speed={98} color="rgba(33, 32, 156, 1)" className="items-center justify-center align-center h-full" /></div> </div>
     ) : (
      
       [...new Set(items)].map((item, index) => (

@@ -15,7 +15,7 @@ export const Applicantslist = () => {
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/applicantlists?search=${id}`
+        `https://application-backend-5vqe.onrender.com/api/applicantlists?search=${id}`
       );
       setItems(response.data);
       setLoading(false);
@@ -28,7 +28,7 @@ export const Applicantslist = () => {
     const provideremail=localStorage.getItem('provideremail');
     try {
       const response = await axios.post(
-        'http://localhost:3000/provider/enablechat',
+        'https://application-backend-5vqe.onrender.com/provider/enablechat',
         {provideremail,
           seekeremail
         }
@@ -41,7 +41,7 @@ export const Applicantslist = () => {
     }
   };  const islogin = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/provider/isproviderlogin");
+      const response = await axios.get("https://application-backend-5vqe.onrender.com/provider/isproviderlogin");
       console.log(response.data);
       if (response.data === "no refreshtoken") {
         

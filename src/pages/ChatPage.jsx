@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { SpinnerDotted } from "spinners-react";
 import "./chat.css";
-const socket = io("http://localhost:3000");
+const socket = io("https://application-backend-5vqe.onrender.com");
 
 const ChatPage = () => {
   const { email } = useParams();
@@ -55,7 +55,7 @@ const ChatPage = () => {
     <div>
       <h2 className=" text-[#21209C] text-center">You are Chatting with {email}</h2>
       {loading ? (
-        <SpinnerDotted />
+       <div className="flex justify-center h-full">   <div className="flex flex-col justify-center"><SpinnerDotted size={50} thickness={100} speed={98} color="rgba(33, 32, 156, 1)" className="items-center justify-center align-center h-full" /></div> </div>
       ) : (
         <div className="h-[70vh] overflow-y-scroll">
           {messages.map((item, index) => (

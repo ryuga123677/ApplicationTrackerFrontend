@@ -9,7 +9,7 @@ export const ProviderProfile = () => {
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/provider/getprofile?search=${email}`
+        `https://application-backend-5vqe.onrender.com/provider/getprofile?search=${email}`
       );
       setItems(response.data);
       console.log(response.data);
@@ -25,7 +25,7 @@ export const ProviderProfile = () => {
   return (
     <>
     <div className='flex w-full h-[100%]'><div className='w-[20%] flex justify-center'><img src={items.profilephoto} className='mt-10 h-40 w-40 rounded-[50%] object-cover ' /></div>
-    <div className='w-[80%] flex flex-col mt-5 justify-evenly'>
+    <div className='w-[80%] flex flex-col mt-20'>
         <div>Name-{items.name}</div>
         <div>Email-{items.email}</div> 
         </div>

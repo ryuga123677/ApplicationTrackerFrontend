@@ -11,7 +11,7 @@ export const Providerlist = () => {
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/user/getprovideremail?search=${localStorage.getItem("seekeremail")}`
+        `https://application-backend-5vqe.onrender.com/user/getprovideremail?search=${localStorage.getItem("seekeremail")}`
       );
       setItems(response.data);
       console.log(response.data);

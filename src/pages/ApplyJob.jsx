@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,7 +19,7 @@ const {jobid}=useParams();
   const [resume, setResume] = useState(null);  // Handle file upload
   const islogin = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/user/isseekerlogin");
+      const response = await axios.get("https://application-backend-5vqe.onrender.com/user/isseekerlogin");
       console.log(response.data);
       if (response.data === "no refreshtoken") {
         
@@ -52,7 +52,7 @@ const {jobid}=useParams();
       formData.append("resume", resume);  // Attach the file
 
       const response = await axios.post(
-        "http://localhost:3000/api/createdetails",
+        "https://application-backend-5vqe.onrender.com/api/createdetails",
         formData,
       
       );

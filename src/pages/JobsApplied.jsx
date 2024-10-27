@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { SpinnerCircularSplit } from "spinners-react";
+import { SpinnerDotted } from "spinners-react";
 import { useNavigate } from "react-router-dom";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdAttachMoney } from "react-icons/md";
@@ -15,7 +15,7 @@ export const JobsApplied = () => {
   const [curtime, setcurtime] = useState(Date.now());
   const getdetails = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/myjobs");
+      const response = await axios.get("https://application-backend-5vqe.onrender.com/api/myjobs");
       setItems(response.data);
       console.log(response.data);
       setLoading(false);
@@ -26,7 +26,7 @@ export const JobsApplied = () => {
   };
   const islogin = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/user/isseekerlogin");
+      const response = await axios.get("https://application-backend-5vqe.onrender.com/user/isseekerlogin");
       console.log(response.data);
       if (response.data === "no refreshtoken") {
         
@@ -48,7 +48,7 @@ export const JobsApplied = () => {
       <div className="flex justify-center h-[100vh] ">
         <div className="flex-column justify-center w-[100%] m-5 bg-[#F1F1F1] overflow-y-auto">
           {loading ? (
-            <SpinnerCircularSplit className="items-center justify-center align-center h-full" />
+             <div className="flex justify-center h-full">   <div className="flex flex-col justify-center"><SpinnerDotted size={50} thickness={100} speed={98} color="rgba(33, 32, 156, 1)" className="items-center justify-center align-center h-full" /></div> </div>
           ) : items === "No data" || items.length === 0 ? (
             <div className="text-center text-xl text-gray-500 mt-10">
               No data available

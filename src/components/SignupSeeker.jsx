@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const SignupSeeker = () => {
   const navigate = useNavigate();
-
+  const [loading, setLoading]=useState(false);
   const [name, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,14 +27,16 @@ export const SignupSeeker = () => {
       formData.append("profilephoto", profilephoto);
     }
 
-    try {
-      const response = await axios.post("http://localhost:3000/user/registerseeker", formData);
+    try { setLoading(true)
+      const response = await axios.post("https://application-backend-5vqe.onrender.com/user/registerseeker", formData);
 
       console.log(response.data.message);
       if (response.data.message === "user created successfully") {
         navigate("/loginseeker");
+        setLoading(false)
       } else {
         navigate("/registerseeker");
+        setLoading(false)
       }
     } catch (err) {
       console.error("Error submitting form", err);
@@ -45,6 +47,7 @@ export const SignupSeeker = () => {
     <>
       <div className="flex justify-center items-center h-screen p-7 rounded-md shadow-md">
         <div className="flex-column justify-center items-center bg-[#F1F1F1] rounded-md shadow-xl p-6">
+        <div className='relative w-0 h-0 border-t-[100px] border-r-[120px] border-transparent border-t-[#21209c]'></div>
           <div className="text-bold text-[#21209C] text-2xl">Signup</div>
 
           <div className="text-lg m-4">
@@ -109,12 +112,13 @@ export const SignupSeeker = () => {
 
           <div className="flex justify-center">
             <button
-              className="bg-[#FDB827] text-[#23120B] w-[80%] rounded-md p-1 shadow-lg"
+              className="bg-[#FDB827] text-[#23120B] w-[80%] rounded-md p-1 shadow-lg hover:scale-105 transition-all"
               onClick={handleSubmit}
             >
-              Submit
+              {loading==false? <div>Submit</div>:(<SpinnerRound size={30} thickness={100} speed={98} color="rgba(255, 255, 255, 1)" />)}
             </button>
           </div>
+          <div className='flex justify-end'> <div className="w-0 h-0 border-solid border-b-[100px] border-l-[120px] border-transparent border-b-[#21209c]"></div></div>
         </div>
       </div>
     </>
