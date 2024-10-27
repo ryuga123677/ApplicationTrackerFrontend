@@ -18,7 +18,7 @@ export const JobsPosted = () => {
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3000/provider/jobsposted?search=${localStorage.getItem(
+        `https://application-backend-5vqe.onrender.com/provider/jobsposted?search=${localStorage.getItem(
           "provideremail"
         )}`
       );

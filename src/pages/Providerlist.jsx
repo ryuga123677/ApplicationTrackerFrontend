@@ -25,7 +25,7 @@ export const Providerlist = () => {
     const seekeremail=localStorage.getItem('seekeremail');
     try {
       const response = await axios.post(
-        'http://localhost:3000/user/enablechat',
+        'https://application-backend-5vqe.onrender.com/user/enablechat',
         {provideremail,
           seekeremail
         }
