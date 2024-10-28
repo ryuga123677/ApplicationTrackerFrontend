@@ -34,7 +34,11 @@ export const SeekerMainPage = () => {
   }
   
   useEffect(() => {
-    islogin();
+    const timer = setTimeout(() => {
+      islogin();
+    }, 3000); 
+  
+    return () => clearTimeout(timer);
   }, []);
  
   return (
