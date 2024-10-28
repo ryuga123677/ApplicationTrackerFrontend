@@ -24,7 +24,7 @@ export const SeekerMainPage = () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/isseekerlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken") {
+      if (response.data === "no refreshtoken"  || response.data==="invalid access token" || islogin) {
         
         navigate('/');
       }

@@ -17,10 +17,11 @@ export const ProviderMainPage = () => {
   const navigate = useNavigate();
   const [check,Setcheck]=useState("Applications");
   const isloginfun = async () => {
+
     try {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/provider/isproviderlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken" || islogin) {
+      if (response.data === "no refreshtoken" || response.data==="invalid access token" || islogin) {
         
         navigate('/');
       }
