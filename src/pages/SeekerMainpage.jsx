@@ -15,8 +15,7 @@ import {  BsHandbagFill } from "react-icons/bs";
 axios.defaults.withCredentials=true;
 export const SeekerMainPage = () => {
   const navigate = useNavigate();
-  const [items, setItems] = useState([]);
-  const [loading, setLoading] = useState(true);
+
   const [check,Setcheck]=useState("Jobs");
  
   const islogin = async () => {
@@ -34,11 +33,9 @@ export const SeekerMainPage = () => {
   }
   
   useEffect(() => {
-    const timer = setTimeout(() => {
+   
       islogin();
-    }, 3000); 
-  
-    return () => clearTimeout(timer);
+ 
   }, []);
  
   return (
