@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { SpinnerDotted } from "spinners-react";
 import "./chat.css";
-const socket = io(`${process.env.REACT_APP_BACKEND_URL}`);
+const socket = io(`${import.meta.env.VITE_BACKEND_URL}`);
 
 const ChatPage = () => {
   const { email } = useParams();

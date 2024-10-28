@@ -11,7 +11,7 @@ export const Providerlist = () => {
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/user/getprovideremail?search=${localStorage.getItem("seekeremail")}`
+        `${import.meta.env.VITE_BACKEND_URL}/user/getprovideremail?search=${localStorage.getItem("seekeremail")}`
       );
       setItems(response.data);
       console.log(response.data);
@@ -25,7 +25,7 @@ export const Providerlist = () => {
     const seekeremail=localStorage.getItem('seekeremail');
     try {
       const response = await axios.post(
-        `${REACT_APP_BACKEND_URL}/user/enablechat`,
+        `${import.meta.env.VITE_BACKEND_URL}/user/enablechat`,
         {provideremail,
           seekeremail
         }

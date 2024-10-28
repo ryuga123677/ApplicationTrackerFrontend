@@ -15,7 +15,7 @@ export const JobsApplied = () => {
   const [curtime, setcurtime] = useState(Date.now());
   const getdetails = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/myjobs`);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/myjobs`);
       setItems(response.data);
       console.log(response.data);
       setLoading(false);
@@ -26,7 +26,7 @@ export const JobsApplied = () => {
   };
   const islogin = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/isseekerlogin`);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/isseekerlogin`);
       console.log(response.data);
       if (response.data === "no refreshtoken") {
         

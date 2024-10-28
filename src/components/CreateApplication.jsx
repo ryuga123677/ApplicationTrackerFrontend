@@ -38,7 +38,7 @@ export const CreateApplication = () => {
     }, []);
     const handleSubmit = async () => {
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/api/createapplication`, {
+            const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/createapplication`, {
                 email,
                 title,
                 location,

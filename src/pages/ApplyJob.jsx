@@ -19,7 +19,7 @@ const {jobid}=useParams();
   const [resume, setResume] = useState(null);  // Handle file upload
   const islogin = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/user/isseekerlogin`);
+      const response = await axios.get(`${import.meta.env.REACT_APP_BACKEND_URL}/user/isseekerlogin`);
       console.log(response.data);
       if (response.data === "no refreshtoken") {
         
@@ -52,7 +52,7 @@ const {jobid}=useParams();
       formData.append("resume", resume);  // Attach the file
 
       const response = await axios.post(
-        `${process.env.REACT_APP_BACKEND_URL}/api/createdetails`,
+        `${import.meta.env.VITE_BACKEND_URL}/api/createdetails`,
         formData,
       
       );

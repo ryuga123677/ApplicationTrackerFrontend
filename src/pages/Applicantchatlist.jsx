@@ -11,7 +11,7 @@ export const Applicantchatlist = () => {
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/provider/getapplieremail?search=${localStorage.getItem("provideremail")}`
+        `${import.meta.env.VITE_BACKEND_URL}/provider/getapplieremail?search=${localStorage.getItem("provideremail")}`
       );
       setItems(response.data);
       console.log(response.data);
@@ -23,7 +23,7 @@ export const Applicantchatlist = () => {
   };
   const islogin = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/provider/isproviderlogin`);
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/provider/isproviderlogin`);
       console.log(response.data);
       if (response.data === "no refreshtoken") {
         

@@ -9,7 +9,7 @@ export const ProviderProfile = () => {
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/provider/getprofile?search=${email}`
+        `${import.meta.env.VITE_BACKEND_URL}/provider/getprofile?search=${email}`
       );
       setItems(response.data);
       console.log(response.data);

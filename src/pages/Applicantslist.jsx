@@ -15,7 +15,7 @@ export const Applicantslist = () => {
   const getdetails = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BACKEND_URL}/api/applicantlists?search=${id}`
+        `${import.meta.env.VITE_BACKEND_URL}/api/applicantlists?search=${id}`
       );
       setItems(response.data);
       setLoading(false);
@@ -28,7 +28,7 @@ export const Applicantslist = () => {
     const provideremail=localStorage.getItem('provideremail');
     try {
       const response = await axios.post(
-        `${REACT_APP_BACKEND_URL}/provider/enablechat`,
+        `${import.meta.VITE_BACKEND_URL}/provider/enablechat`,
         {provideremail,
           seekeremail
         }
@@ -41,7 +41,7 @@ export const Applicantslist = () => {
     }
   };  const islogin = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/provider/isproviderlogin`);
+      const response = await axios.get(`${process.env.VITE_BACKEND_URL}/provider/isproviderlogin`);
       console.log(response.data);
       if (response.data === "no refreshtoken") {
         

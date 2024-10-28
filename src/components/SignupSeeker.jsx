@@ -28,7 +28,7 @@ export const SignupSeeker = () => {
     }
 
     try { setLoading(true)
-      const response = await axios.post(`${process.env.REACT_APP_BACKEND_URL}/user/registerseeker`, formData);
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/user/registerseeker`, formData);
 
       console.log(response.data.message);
       if (response.data.message === "user created successfully") {
