@@ -3,7 +3,7 @@ import { FcSearch } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../pages/AuthContext";
 export const Navbar = () => {
-  const { isLogin, userInfo, logout } = useAuth();
+  const { isLogin, logout } = useAuth();
   const navigate=useNavigate();
   const deleteCookie = (name) => {
     document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;

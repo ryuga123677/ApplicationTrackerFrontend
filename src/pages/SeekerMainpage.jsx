@@ -12,13 +12,15 @@ import { Providerlist } from "./Providerlist";
 import { IoIosContact } from "react-icons/io";import { CiViewList } from "react-icons/ci";
 import { IoMdChatbubbles } from "react-icons/io";
 import {  BsHandbagFill } from "react-icons/bs";
+import { useAuth } from "../pages/AuthContext";
 axios.defaults.withCredentials=true;
 export const SeekerMainPage = () => {
+  const {islogin}=useAuth();
   const navigate = useNavigate();
 
   const [check,Setcheck]=useState("Jobs");
  
-  const islogin = async () => {
+  const isloginfun = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/isseekerlogin`);
       console.log(response.data);
@@ -34,7 +36,7 @@ export const SeekerMainPage = () => {
   
   useEffect(() => {
    
-      islogin();
+      isloginfun();
  
   }, []);
  

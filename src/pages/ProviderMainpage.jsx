@@ -11,14 +11,16 @@ import { ProviderProfile } from "../components/ProviderProfile";
 import { Applicantchatlist } from "./Applicantchatlist";
 import { IoIosContact } from "react-icons/io";import { CiViewList } from "react-icons/ci";
 import { IoMdChatbubbles } from "react-icons/io";
+import { useAuth } from "../pages/AuthContext";
 export const ProviderMainPage = () => {
+  const {islogin}=useAuth();
   const navigate = useNavigate();
   const [check,Setcheck]=useState("Applications");
-  const islogin = async () => {
+  const isloginfun = async () => {
     try {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/provider/isproviderlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken") {
+      if (response.data === "no refreshtoken" || islogin) {
         
         navigate('/');
       }
@@ -29,7 +31,7 @@ export const ProviderMainPage = () => {
   }
   
   useEffect(() => {
-    islogin();
+    isloginfun();
   }, []);
  
  
