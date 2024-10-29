@@ -74,7 +74,7 @@ export const LoginSeeker = () => {
           <div className='flex text-sm ml-5 m-2'>Doesn't have account? <button className='text-[#edc368] text-sm' onClick={()=>navigate('/signupseeker')}>Signup here</button></div>
           <div className="flex justify-center">
             <button
-              className="bg-[#FDB827] w-[80%] text-[#23120B] rounded-md p-1 m-2 shadow-lg hover:scale-105 transition-all"
+              className="bg-[#FDB827] w-[80%] text-[#23120B] rounded-md p-1 m-2 shadow-xl flex justify-center hover:scale-105 transition-all"
               onClick={handleSubmit}
             >
               {loading==false? <div>Submit</div>:(<SpinnerRound size={30} thickness={100} speed={98} color="rgba(255, 255, 255, 1)" />)}
