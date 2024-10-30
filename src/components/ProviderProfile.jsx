@@ -3,6 +3,7 @@ import { useState,useEffect } from 'react';
 import axios from 'axios';
 
 export const ProviderProfile = () => {
+  axios.defaults.withCredentials=true;
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const email = localStorage.getItem("provideremail", "");

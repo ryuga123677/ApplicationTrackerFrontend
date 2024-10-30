@@ -9,7 +9,7 @@ import { useAuth } from "../pages/AuthContext";
 export const LoginProvider = () => {
   const notify = (message) => toast(message);
   const navigate = useNavigate();
-
+  axios.defaults.withCredentials=true;
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

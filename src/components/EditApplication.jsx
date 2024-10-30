@@ -10,6 +10,7 @@ import { MdAttachMoney } from "react-icons/md";
 import { FaRegBuilding } from "react-icons/fa";
 import { BsCalendarDate } from "react-icons/bs";
 export const EditApplication = () => {
+    axios.defaults.withCredentials=true;
     const notify = (message) => toast(message);
     const {id}=useParams();
     const navigate = useNavigate();

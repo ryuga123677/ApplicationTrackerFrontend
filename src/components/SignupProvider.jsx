@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export const SignupProvider = () => {
+  axios.defaults.withCredentials=true;
   const navigate = useNavigate();
   const [loading, setLoading]=useState(false);
   const [name, setUsername] = useState("");

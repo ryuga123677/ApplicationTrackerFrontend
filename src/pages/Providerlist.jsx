@@ -4,8 +4,9 @@ import axios from "axios";
 import { SpinnerCircularSplit } from "spinners-react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../pages/AuthContext";
-export const Providerlist = () => {
 
+export const Providerlist = () => {
+  axios.defaults.withCredentials=true;
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);

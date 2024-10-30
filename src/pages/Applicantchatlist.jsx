@@ -3,7 +3,9 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { SpinnerDotted } from "spinners-react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 export const Applicantchatlist = () => {
+  axios.defaults.withCredentials=true;
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -22,10 +24,10 @@ export const Applicantchatlist = () => {
     }
   };
   const islogin = async () => {
-    try {
+    try {const {islogin}=useAuth();
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/provider/isproviderlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken") {
+      if (response.data === "no refreshtoken" || response.data==="invalid access token" || !islogin) {
         
         navigate('/');
       }

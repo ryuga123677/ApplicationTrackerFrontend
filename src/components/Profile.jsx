@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState,useEffect } from 'react';
 import axios from 'axios';
+import { useAuth } from '../pages/AuthContext';
 
 export const Profile = () => {
+  axios.defaults.withCredentials=true;
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const email = localStorage.getItem("seekeremail", "");
@@ -20,10 +22,10 @@ export const Profile = () => {
     }
   };
   const islogin = async () => {
-    try {
+    try { const {islogin}=useAuth()
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/isseekerlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken") {
+      if (response.data === "no refreshtoken" || response.data==="invalid access token" || !islogin) {
         
         navigate('/');
       }

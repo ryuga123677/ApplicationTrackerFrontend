@@ -9,10 +9,12 @@ import { FaRegBuilding } from "react-icons/fa";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDeleteForever } from "react-icons/md";
 export const Applications = () => {
+  axios.defaults.withCredentials=true;
     const [items, setItems] = useState([]);
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
     const getdetails = async () => {
+      
 
         try {
             const username = localStorage.getItem('username')||"";

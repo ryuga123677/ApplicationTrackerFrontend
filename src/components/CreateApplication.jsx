@@ -5,10 +5,11 @@ import { SpinnerDotted } from 'spinners-react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useAuth } from '../pages/AuthContext';
 export const CreateApplication = () => {
     const notify = (message) => toast(message);
     const navigate = useNavigate();
-
+    axios.defaults.withCredentials=true;
 
     const [title, setTitle] = useState('');
     const [location, setLocation] = useState('');
@@ -20,10 +21,10 @@ export const CreateApplication = () => {
     const [status, setStatus] = useState('');
     const [email, setEmail] = useState(localStorage.getItem('provideremail') || '');
     const islogin = async () => {
-      try {
+      try {const {islogin}=useAuth();
         const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/provider/isproviderlogin`);
         console.log(response.data);
-        if (response.data === "no refreshtoken") {
+        if (response.data === "no refreshtoken" || response.data==="invalid access token" || !islogin) {
           
           navigate('/');
         }

@@ -6,6 +6,7 @@ import "./chat.css";
 const socket = io(`${import.meta.env.VITE_BACKEND_URL}`);
 
 const ChatPage = () => {
+  axios.defaults.withCredentials=true;
   const { email } = useParams();
   const [loading, setLoading] = useState(true);
 

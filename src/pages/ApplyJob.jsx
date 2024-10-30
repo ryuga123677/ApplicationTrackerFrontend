@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
+import { useAuth } from "./AuthContext";
 export const ApplyJob = () => {
   const notify = (message) => toast(message);
   const navigate = useNavigate();
@@ -18,10 +19,11 @@ const {jobid}=useParams();
   const [coverletter, setCV] = useState("");
   const [resume, setResume] = useState(null);  // Handle file upload
   const islogin = async () => {
-    try {
+    try {axios.defaults.withCredentials=true;
+      const {islogin}=useAuth();
       const response = await axios.get(`${import.meta.env.REACT_APP_BACKEND_URL}/user/isseekerlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken") {
+      if (response.data === "no refreshtoken" || response.data==="invalid access token" || !islogin) {
         
         navigate('/');
       }

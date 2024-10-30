@@ -9,7 +9,10 @@ import { MdAttachMoney } from "react-icons/md";
 import { FaRegBuilding } from "react-icons/fa";
 import { BsCalendarDate } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AuthContext";
+
 export const FullView = () => {
+  axios.defaults.withCredentials=true;
   const { user } = useParams();
   const navigate = useNavigate();
   const notify = (message) => toast(message);
@@ -29,10 +32,10 @@ export const FullView = () => {
     }
   };
   const islogin = async () => {
-    try {
+    try {const {islogin} = useAuth();
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/isseekerlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken") {
+      if (response.data === "no refreshtoken" || response.data==="invalid access token" || !islogin) {
         
         navigate('/');
       }

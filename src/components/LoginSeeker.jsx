@@ -7,6 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useAuth } from "../pages/AuthContext";
 export const LoginSeeker = () => {
+  axios.defaults.withCredentials=true;
     const notify = (message) => toast(message);
     const navigate = useNavigate();
     const { login } = useAuth();

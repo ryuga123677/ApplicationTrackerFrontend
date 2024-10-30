@@ -5,8 +5,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { IoLocationOutline } from "react-icons/io5";
 import { MdAttachMoney } from "react-icons/md";
 import { FaRegBuilding } from "react-icons/fa";
+import { useAuth } from "./AuthContext";
 
 export const Applicantslist = () => {
+  axios.defaults.withCredentials=true;
   const navigate = useNavigate();
   const { id } = useParams();
   const [items, setItems] = useState([]);
@@ -40,10 +42,10 @@ export const Applicantslist = () => {
       console.log(error);
     }
   };  const islogin = async () => {
-    try {
+    try {const {islogin}=useAuth()
       const response = await axios.get(`${process.env.VITE_BACKEND_URL}/provider/isproviderlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken") {
+      if (response.data === "no refreshtoken" || response.data==="invalid access token" || !islogin) {
         
         navigate('/');
       }

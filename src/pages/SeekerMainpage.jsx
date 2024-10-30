@@ -13,7 +13,7 @@ import { IoIosContact } from "react-icons/io";import { CiViewList } from "react-
 import { IoMdChatbubbles } from "react-icons/io";
 import {  BsHandbagFill } from "react-icons/bs";
 import { useAuth } from "../pages/AuthContext";
-axios.defaults.withCredentials=true;
+
 export const SeekerMainPage = () => {
   const {islogin}=useAuth();
   const navigate = useNavigate();
@@ -22,9 +22,10 @@ export const SeekerMainPage = () => {
  
   const isloginfun = async () => {
     try {
+      axios.defaults.withCredentials=true;
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/isseekerlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken"  || response.data==="invalid access token" || islogin) {
+      if (response.data === "no refreshtoken"  || response.data==="invalid access token" || !islogin) {
         
         navigate('/');
       }

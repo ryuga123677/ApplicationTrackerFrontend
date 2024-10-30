@@ -12,16 +12,17 @@ import { Applicantchatlist } from "./Applicantchatlist";
 import { IoIosContact } from "react-icons/io";import { CiViewList } from "react-icons/ci";
 import { IoMdChatbubbles } from "react-icons/io";
 import { useAuth } from "../pages/AuthContext";
+
 export const ProviderMainPage = () => {
   const {islogin}=useAuth();
   const navigate = useNavigate();
   const [check,Setcheck]=useState("Applications");
   const isloginfun = async () => {
-
+    axios.defaults.withCredentials=true;
     try {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/provider/isproviderlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken" || response.data==="invalid access token" || islogin) {
+      if (response.data === "no refreshtoken" || response.data==="invalid access token" || !islogin) {
         
         navigate('/');
       }

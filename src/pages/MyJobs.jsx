@@ -7,8 +7,10 @@ import { TiDelete } from "react-icons/ti";
 import { MdAttachMoney } from "react-icons/md";
 import { FaRegBuilding } from "react-icons/fa";
 import { TfiTimer } from "react-icons/tfi";
+import { useAuth } from "../pages/AuthContext";
 
 export const JobsPosted = () => {
+  axios.defaults.withCredentials=true;
   const navigate = useNavigate();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -31,11 +33,12 @@ export const JobsPosted = () => {
   };
 
   const islogin = async () => {
+    const {islogin}=useAuth();
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/provider/isproviderlogin`
       );
-      if (response.data === "no refreshtoken") {
+      if (response.data === "no refreshtoken" || response.data==="invalid access token" || !islogin) {
         navigate("/");
       }
     } catch (error) {
