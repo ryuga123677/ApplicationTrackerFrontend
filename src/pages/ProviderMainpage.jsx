@@ -23,7 +23,7 @@ export const ProviderMainPage = () => {
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/provider/isproviderlogin`);
       console.log(response.data);
       if (response.data === "no refreshtoken" || response.data==="invalid access token" || !islogin) {
-        
+        console.log("yes");
         navigate('/');
       }
     } catch (error) {
