@@ -7,7 +7,7 @@ export const Navbar = () => {
 
   const { islogin, logout } = useAuth();
   const navigate=useNavigate();
-const [item,setItems]=useState("");
+const [item,setItems]=useState({});
   
   
   const handleLogout = async() => {
@@ -51,7 +51,7 @@ const name=localStorage.getItem('whologined');
         <div className="flex space-x-12">
           <button className="text-[#23120B] hover:text-[#FDB827] font-bold">About</button>
           <button  className="text-[#23120B] hover:text-[#FDB827] font-bold" onClick={()=>window.open("https://www.linkedin.com/in/harshit-kumar-vishwakarma-4793bb280/", "_blank")}>Contact us</button>
-         {item==""? (<div  className="text-[#23120B] hover:text-[#FDB827] font-bold"><button onClick={handleLogout}>Logout</button></div>):(<div></div>)}
+         {item.message==='Logged out successfully'? (<div></div>):(<div  className="text-[#23120B] hover:text-[#FDB827] font-bold"><button onClick={handleLogout}>Logout</button></div>)}
         </div>
       </div>
     </>
