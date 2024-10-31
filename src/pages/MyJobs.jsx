@@ -38,7 +38,7 @@ export const JobsPosted = () => {
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/provider/isproviderlogin`
       );
-      if (response.data === "no refreshtoken" || response.data==="invalid access token" ) {
+      if (response.data === "no refreshtoken" || response.data==="invalid refresh token" ) {
         navigate("/");
       }
     } catch (error) {

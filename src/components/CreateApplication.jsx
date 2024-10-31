@@ -24,7 +24,7 @@ export const CreateApplication = () => {
       try {const {islogin}=useAuth();
         const response = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/provider/isproviderlogin`);
         console.log(response.data);
-        if (response.data === "no refreshtoken" || response.data==="invalid access token" || !islogin) {
+        if (response.data === "no refreshtoken" || response.data==="invalid refresh token") {
           
           navigate('/');
         }

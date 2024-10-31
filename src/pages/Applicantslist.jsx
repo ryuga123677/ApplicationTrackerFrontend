@@ -45,7 +45,7 @@ export const Applicantslist = () => {
     try {const {islogin}=useAuth()
       const response = await axios.get(`${process.env.VITE_BACKEND_URL}/provider/isproviderlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken" || response.data==="invalid access token") {
+      if (response.data === "no refreshtoken" || response.data==="invalid refresh token") {
         
         navigate('/');
       }

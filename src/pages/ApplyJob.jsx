@@ -23,7 +23,7 @@ const {jobid}=useParams();
       const {islogin}=useAuth();
       const response = await axios.get(`${import.meta.env.REACT_APP_BACKEND_URL}/user/isseekerlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken" || response.data==="invalid access token") {
+      if (response.data === "no refreshtoken" || response.data==="invalid refresh token") {
         
         navigate('/');
       }

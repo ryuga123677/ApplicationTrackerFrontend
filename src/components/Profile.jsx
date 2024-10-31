@@ -25,7 +25,7 @@ export const Profile = () => {
     try { const {islogin}=useAuth()
       const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/isseekerlogin`);
       console.log(response.data);
-      if (response.data === "no refreshtoken" || response.data==="invalid access token") {
+      if (response.data === "no refreshtoken" || response.data==="invalid refresh token") {
         
         navigate('/');
       }
