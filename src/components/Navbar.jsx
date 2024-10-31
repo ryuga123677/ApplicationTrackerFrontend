@@ -19,7 +19,7 @@ const name=localStorage.getItem('whologined');
           `${import.meta.env.VITE_BACKEND_URL}/user/logoutuser`
         );
         setItems(response.data);
-        setLoading(false);
+
         logout();
         navigate('/'); 
       }
@@ -29,12 +29,12 @@ const name=localStorage.getItem('whologined');
           `${import.meta.env.VITE_BACKEND_URL}/provider/logoutprovider`
         );
         setItems(response.data);
-        setLoading(false);
+      
         logout();
         navigate('/'); 
       }
       } catch (error) {
-        setLoading(false);
+       
         console.log(error);
       }
  
