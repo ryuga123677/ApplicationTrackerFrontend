@@ -34,7 +34,7 @@ export const Jobs = () => {
       const response = await axios.get(
         `${import.meta.env.VITE_BACKEND_URL}/user/isseekerlogin`
       );
-      if (response.data === "no refreshtoken" || response.data==="invalid access token" || !islogin) {
+      if (response.data === "no refreshtoken" || response.data==="invalid access token" ) {
         navigate("/");
       }
     } catch (error) {

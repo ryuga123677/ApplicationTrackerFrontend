@@ -27,6 +27,7 @@ export const LoginProvider = () => {
       console.log(response.data.message);
       if (response.data.message === "logged in successfully") {
         localStorage.setItem("provideremail", email);
+        localStorage.setItem('whologined',"provider");
         login(email);
         notify(response.data.message);
         setLoading(false);

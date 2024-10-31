@@ -1,21 +1,45 @@
-import React from "react";
+import React, { useState } from "react";
 import { FcSearch } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../pages/AuthContext";
+import axios from "axios";
 export const Navbar = () => {
 
   const { islogin, logout } = useAuth();
   const navigate=useNavigate();
-  const deleteCookie = (name) => {
-    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
-  };
+const [item,setItems]=useState("");
   
   
-  const handleLogout = () => {
-    deleteCookie('accessToken');
-    deleteCookie('refreshToken');
-    logout();
-    navigate('/'); 
+  const handleLogout = async() => {
+const name=localStorage.getItem('whologined');
+      try {
+        if(name=="seeker")
+        {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/user/logoutuser`
+        );
+        setItems(response.data);
+        setLoading(false);
+        logout();
+        navigate('/'); 
+      }
+      else if(name=="provider")
+      {
+        const response = await axios.get(
+          `${import.meta.env.VITE_BACKEND_URL}/provider/logoutprovider`
+        );
+        setItems(response.data);
+        setLoading(false);
+        logout();
+        navigate('/'); 
+      }
+      } catch (error) {
+        setLoading(false);
+        console.log(error);
+      }
+ 
+   
+
   };
   return (
     <>
@@ -27,7 +51,7 @@ export const Navbar = () => {
         <div className="flex space-x-12">
           <button className="text-[#23120B] hover:text-[#FDB827] font-bold">About</button>
           <button  className="text-[#23120B] hover:text-[#FDB827] font-bold" onClick={()=>window.open("https://www.linkedin.com/in/harshit-kumar-vishwakarma-4793bb280/", "_blank")}>Contact us</button>
-         {islogin? (<div  className="text-[#23120B] hover:text-[#FDB827] font-bold"><button onClick={handleLogout}>Logout</button></div>):(<div></div>)}
+         {item==""? (<div  className="text-[#23120B] hover:text-[#FDB827] font-bold"><button onClick={handleLogout}>Logout</button></div>):(<div></div>)}
         </div>
       </div>
     </>
