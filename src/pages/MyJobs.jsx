@@ -60,7 +60,7 @@ export const JobsPosted = () => {
 
   return (
     <div className="flex justify-center h-[100vh] ">
-      <div className="flex-column justify-center w-[100%] m-5 bg-[#F1F1F1] overflow-y-auto">
+      <div className="flex-column justify-center items-center w-[100%] m-5 bg-[#F1F1F1] overflow-y-auto">
         <div className="w-full flex justify-center m-2">
           <input
             type="text"
@@ -88,7 +88,7 @@ export const JobsPosted = () => {
           filteredItems.map((item, index) => (
             <button
               key={index}
-              className="flex flex-wrap m-2 rounded-md shadow-md p-10 mr-10 w-[90%] bg-white align-center"
+              className="flex flex-wrap m-2 rounded-md shadow-md p-10 mr-10 w-[90%] bg-white align-center hover:scale-105 transition-all"
             >
               <div className="w-[100%]">
                 <div className="flex justify-between items-center text-2xl text-[#21209C] ml-14">

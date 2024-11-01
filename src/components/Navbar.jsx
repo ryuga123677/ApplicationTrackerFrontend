@@ -43,7 +43,7 @@ const name=localStorage.getItem('whologined');
   };
   return (
     <>
-      <div className="flex  space-between bg-[#F1F1F1] justify-between p-3 flex-wrap w-[100%]">
+      <div className="flex  space-between bg-white justify-between p-3 flex-wrap w-[100%]">
         <div className="flex items-center ">
           <div className="mr-4 ml-2 text-[#21209C] text-lg fon font-bold">ApplicationTracker</div>
           <FcSearch className="mt-1" />
