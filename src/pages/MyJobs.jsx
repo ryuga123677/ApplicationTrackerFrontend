@@ -36,7 +36,9 @@ export const JobsPosted = () => {
     const {islogin}=useAuth();
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_BACKEND_URL}/provider/isproviderlogin`
+        `${import.meta.env.VITE_BACKEND_URL}/provider/isproviderlogin`,{
+          withCredentials:true,
+        }
       );
       if (response.data === "no refreshtoken" || response.data==="invalid refresh token" ) {
         navigate("/");
