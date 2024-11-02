@@ -107,26 +107,27 @@ export const JobsPosted = () => {
                   </div>
                 </div>
 
-                <div className="flex gap-[10%] ml-14 mt-5">
+                <div className="flex justify-between ml-14 mt-5 ">
                   <div className="text-lg text-[#FDB827] flex">
                     <FaRegBuilding className="mt-1 mr-1" />
                     {item.companyname}
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-5 text-sm">
+                  <div className="flex gap-1">
                     <IoLocationOutline className="mt-1" />
-                    <div> {item.location}</div>
+                    <div>{item.location}</div>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-1">
                     <MdAttachMoney className="mt-1" />
                     <div>{item.amount}/month</div>
                   </div>
-                  <div className="flex gap-2">
+                  <div className="flex gap-1 text-[#FDB827]">
                     <TfiTimer className="mt-1" />
                     {Math.floor(
-                      (new Date(curtime) - new Date(item.date)) /
-                        (1000 * 60 * 60 * 24)
+                      (new Date(curtime) - new Date(item.date)) / (1000 * 60 * 60 * 24)
                     )}{" "}
                     days ago
+                  </div>
                   </div>
                 </div>
               </div>
